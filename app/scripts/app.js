@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name oxAppApp
+ * @name OxApp
  * @description
- * # oxAppApp
+ * # OxApp
  *
  * Main module of the application.
  */
 angular
-  .module('oxAppApp', [
+  .module('OxApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

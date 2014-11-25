@@ -1,5 +1,5 @@
 {
-  "name": "oxapp",
+  "name": "Ox",
   "version": "0.0.0",
   "dependencies": {
     "generator-angular": "^0.10.0"

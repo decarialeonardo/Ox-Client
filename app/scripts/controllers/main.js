@@ -2,16 +2,12 @@
 
 /**
  * @ngdoc function
- * @name oxAppApp.controller:MainCtrl
+ * @name OxApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the oxAppApp
+ * Controller of the OxApp
  */
-angular.module('oxAppApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('OxApp')
+  .controller('MainCtrl', ['$scope', function ($scope) {
+   
+  }]);
