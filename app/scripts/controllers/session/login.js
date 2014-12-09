@@ -7,7 +7,9 @@
  * # SessionLoginCtrl
  * Controller of the oxApp
  */
-angular.module('oxApp')
-  .controller('LoginCtrl', ['$scope', function ($scope) {
-   
+angular.module('OxApp')
+  .controller('LoginCtrl', ['$scope','$location', function ($scope, $location) {
+		$scope.logged = function(){
+			$location.path('/pipeline/dashboard');
+		}
   }]);
