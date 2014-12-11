@@ -2,9 +2,13 @@
   "name": "Ox",
   "version": "0.0.0",
   "dependencies": {
+    "body-parser": "^1.10.0",
+    "express": "^4.10.5",
     "generator-angular": "^0.10.0"
   },
   "devDependencies": {
+    "body-parser": "^1.10.0",
+    "express": "^4.10.5",
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
     "grunt-concurrent": "^0.5.0",
@@ -15,7 +19,7 @@
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-cssmin": "^0.9.0",
     "grunt-contrib-htmlmin": "^0.3.0",
-    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-contrib-imagemin": "^0.9.2",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
