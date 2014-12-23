@@ -10,13 +10,15 @@
 angular.module('OxApp')
   .service('ApiUtils', ['$http',function ($http) {
 
-  	var serverURL = '';
+    $http.defaults.headers.common.Authorization = 'Bearer accessToken';
+
+  	var serverURL = 'https://ox-server.herokuapp.com/me';
   	var serverURLJava = '';
   	var serverURLNode = 'http://localhost:5000/';
   	
     this.getServerURL = function(){
-	  	//return serverURL;
-	  	return serverURLBuild;
+	  	return serverURL;
+	  	//return serverURLBuild;
       	//return serverURLJava;
 	};
 
