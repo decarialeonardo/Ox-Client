@@ -22,4 +22,15 @@ angular.module('OxApp')
   		});
     };
 
+    this.saveProject = function(params, success, error){
+        $http.post(serverURL+'/projects', params)
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
   }]);

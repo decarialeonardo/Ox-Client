@@ -20,4 +20,11 @@ angular.module('OxApp')
   		}
 		ApiProject.getProjects(onSuccess, onError);
 	}
+
+    this.saveProject = function(params, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        ApiProject.saveProject(params, onSuccess, onError);
+    }
 }]);
