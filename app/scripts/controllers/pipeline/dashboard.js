@@ -30,6 +30,18 @@ angular.module('OxApp')
 
             $scope.project = {};
 
+            var getIdForLocation = function(location){
+                var stringArray = location.split('/');
+                // example of url "https://ox-server.herokuapp.com//me/projects/1"
+                return stringArray[stringArray.length - 1];
+            }
+
+            var createdStage = function(response){
+                //$scope.alert = { msg: 'Se ha creado el proyecto con exito.' };
+
+                $modalInstance.close();
+            }
+
             var createdProject = function(response){
                 var data = {
                     "type":"commit-stage",
@@ -37,7 +49,8 @@ angular.module('OxApp')
                     "branch": $scope.project.branch
                 };
 
-                //Stage.setStage(response.id,data,createdProject,onError);
+                var projectId = getIdForLocation(response.headers('Location'));
+                Stage.setStage(projectId,data,createdStage,onError);
             };
 
 			$scope.createProject = function (project) {
@@ -47,7 +60,7 @@ angular.module('OxApp')
                     'description': project.description
                 };
                 Project.saveProject(data,createdProject,onError);
-				$modalInstance.close($scope.selected.item);
+				$modalInstance.close();
 			};
 
 			$scope.cancel = function () {
