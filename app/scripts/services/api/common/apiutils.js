@@ -12,7 +12,7 @@ angular.module('OxApp')
 
     $http.defaults.headers.common.Authorization = 'Bearer accessToken';
 
-  	var serverURL = 'https://ox-server.herokuapp.com/me';
+  	var serverURL = 'http://172.17.201.94:9091/Ox-Server/me';
   	var serverURLJava = '';
   	var serverURLNode = 'http://localhost:5000/';
   	
