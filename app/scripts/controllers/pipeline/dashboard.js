@@ -8,7 +8,7 @@
  * Controller of the OxApp
  */
 angular.module('OxApp')
-  .controller('DashboardCtrl', ['$scope','$modal', 'Project', 'Stage', function ($scope, $modal, Project, Stage) {
+  .controller('DashboardCtrl', ['$scope','$modal', 'Project', 'Stage', 'NotificationAPI', function ($scope, $modal, Project, Stage, NotificationAPI) {
         $scope.projects = [];
 
   		$scope.open = function(){
@@ -37,8 +37,7 @@ angular.module('OxApp')
             }
 
             var createdStage = function(response){
-                //$scope.alert = { msg: 'Se ha creado el proyecto con exito.' };
-
+                NotificationAPI.showNotification('Se ha creado el proyecto con exito.');
                 $modalInstance.close();
             }
 

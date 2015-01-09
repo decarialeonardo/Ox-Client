@@ -2,29 +2,42 @@
 (function(window, angular, undefined) {'use strict';
    angular.module('notificationModule', [])
 
-    .controller('Controller', ['$scope', function($scope) {
-        $scope.notification = {
-            show: false
-        };
+    .controller('NotificationController', ['$scope', 'NotificationAPI', function($scope, NotificationAPI) {
+        $scope.api = NotificationAPI;
     }])
 
-    .directive('notification',['$timeout', function($timeout){
+
+    .factory('NotificationAPI', function() {
+        return {
+            status: false,
+            message:'',
+            showNotification: function(msg) {
+                this.status = true;
+                this.message = msg;
+            },
+            clear: function() {
+                this.status = false;
+            }
+        }
+    })
+
+    .directive('notification',['$timeout','$animate', function($timeout, $animate){
       return {
          restrict: 'E',
          replace: true,
-         transclude: true,
+         controller: 'NotificationController',
          template: 
-            '<div class="alert alert-success" role="alert">'+
+            '<div class="alert alert-success" role="alert" ng-show="api.status">'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                '<div ng-transclude></div>'+
+                '{{api.message}}'+
             '</div>',
          link: function(scope, element, attrs){
             // watch for changes
-            attrs.$observe('ngShow', function (value) {
+            scope.$watch(attrs.ngShow, function ngShowWatchAction(value){
                 if ( value ){
                     $timeout(function(){
-                        scope.notification.show = false;
-                        //element.remove();
+                        scope.api.status = false;
+                        $animate['removeClass'](element, 'ng-hide');
                     }, 5000);
                 }
             });
