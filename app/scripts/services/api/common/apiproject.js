@@ -33,4 +33,26 @@ angular.module('OxApp')
         });
     };
 
+    this.deleteProject = function(projectId, success, error){
+        $http.delete(serverURL+'/projects/'+projectId)
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
+    this.runProject = function(projectId, success, error){
+        $http.post(serverURL+'/projects/'+projectId+'/run')
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
   }]);

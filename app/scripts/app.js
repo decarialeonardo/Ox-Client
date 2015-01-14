@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'notificationModule',
+    'cardflipModule',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
@@ -32,6 +33,10 @@ angular
       .when('/pipeline/dashboard', {
         templateUrl: 'views/pipeline/dashboard.html',
         controller: 'DashboardCtrl'
+      })
+      .when('/pipeline/grid/:projectId', {
+        templateUrl: 'views/pipeline/grid.html',
+        controller: 'GridCtrl'
       })
       .otherwise({
         redirectTo: '/'

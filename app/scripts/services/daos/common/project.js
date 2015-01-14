@@ -27,4 +27,18 @@ angular.module('OxApp')
         }
         ApiProject.saveProject(params, onSuccess, onError);
     }
+
+    this.deleteProject = function(projectId, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        ApiProject.deleteProject(projectId, onSuccess, onError);
+    }
+
+    this.runProject = function(projectId, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        ApiProject.runProject(projectId, onSuccess, onError);
+    }
 }]);

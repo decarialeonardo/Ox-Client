@@ -22,4 +22,16 @@ angular.module('OxApp')
   				error(reason);
   		});
     };
+
+    this.getStages = function(projectId, success, error){
+        $http.get(serverURL+'/projects/'+projectId+'/stages')
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
  }]);

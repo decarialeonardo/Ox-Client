@@ -21,4 +21,12 @@ angular.module('OxApp')
   		
 		ApiStage.setStage(projectId, params, onSuccess, onError);
 	}
+
+    this.getStages = function(projectId, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        
+        ApiStage.getStages(projectId, onSuccess, onError);
+    }
 }]);
