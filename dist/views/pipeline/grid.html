@@ -1,0 +1,26 @@
+<notification></notification> <div class="col-md-3"> <div class="col-md-9"> <button ng-click="createModal()" class="thumbnail"> <img ng-src="http://placehold.it/171x180&amp;text=crear" style="height:180px;width: 100%"> </button> </div> </div> <div class="col-md-9"> <div class="row" ng-repeat="row in getRows(rowPosition+1) track by $index"> <div class="col-xs-{{colDivision}}" ng-repeat="col in getCols(maxCol+1) track by $index"> <div style="display:none">{{job = getJobInGrid($parent.$index, $index)}}</div> <cardflip flipped="flipped"> <card-front> <div class="thumbnail" card-toggle> <div class="caption"> <h3>{{job.type}}</h3> </div> </div> </card-front> <card-back> <button type="button" class="btn btn-success" card-toggle>Volve</button> <button type="button" class="btn btn-success" ng-click="run(job.id)">Correr</button> <button type="button" class="btn btn-info" ng-click="createModal(job)">Editar</button> <button type="button" class="btn btn-danger" ng-click="delete(job.id)">Borrar</button> </card-back> </cardflip> </div> </div> </div> <script type="text/ng-template" id="createStageModal.html"><div class="modal-header">
+        <h3 class="modal-title">Crear Stage</h3>
+    </div>
+    <div class="modal-body">
+		<div class="form-group">
+			<label for="name">Nombre:</label>
+			<input type="text" class="form-control" ng-model="stage.type" placeholder="Enter Name">
+		</div>
+		<div class="form-group">
+			<label for="url">Url:</label>
+			<input type="text" class="form-control" ng-model="stage.url" placeholder="Ej: https://github.com/decarialeonardo/Ox-Client">
+		</div>
+		<div class="form-group">
+			<label for="previous">Padre:</label>
+			<select class="form-control" ng-model="stage.previous">
+				<option ng-repeat="stg in stages" value="{{stg.id}}">
+			    	{{stg.type}}
+			    </option>
+			    <option value="" selected>Seleccione el stage padre</option>
+			</select>
+		</div>
+    </div>
+    <div class="modal-footer">
+    	<button class="btn btn-success" ng-click="addStage(stage)">Crear</button>
+        <button class="btn btn-default" ng-click="close()">Cerrar</button>
+    </div></script>
