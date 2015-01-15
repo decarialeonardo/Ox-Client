@@ -20,9 +20,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-        <div class="">
-            <div ng-view=""></div>
-        </div>
+    <nav ng-include="'views/layout/navbar.html'" ng-controller="NavbarCtrl" class="navbar navbar-default" role="navigation" ng-show="!isActive('/login')">
+    </nav>
+    <div class="">
+        <div ng-view=""></div>
+    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -82,7 +84,9 @@
         <script src="scripts/services/api/common/apistage.js"></script>
         <script src="scripts/modules/notification.js"></script>
         <script src="scripts/modules/cardflip.js"></script>
+        <script src="scripts/modules/fullscreen.js"></script>
         <script src="scripts/controllers/pipeline/grid.js"></script>
+        <script src="scripts/controllers/layout/navbar.js"></script>
         <!-- endbuild -->
 </body>
 </html>

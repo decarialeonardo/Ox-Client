@@ -18,11 +18,12 @@ angular
     'ngTouch',
     'notificationModule',
     'cardflipModule',
+    'fullscreenModule',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/login', {
         templateUrl: 'views/session/login.html',
         controller: 'LoginCtrl'
       })
@@ -38,7 +39,11 @@ angular
         templateUrl: 'views/pipeline/grid.html',
         controller: 'GridCtrl'
       })
+      .when('/layout/navbar', {
+        templateUrl: 'views/layout/navbar.html',
+        controller: 'NavbarCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   });
