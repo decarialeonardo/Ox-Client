@@ -2,6 +2,49 @@
 	padding-top: 70px;
 }
 
+.navbar-default {
+  background-color: #0B3F41;
+  border-color: #e7e7e7;
+}
+
+.navbar-header{
+  margin: 0;
+
+  a.navbar-brand{
+    background: transparent url(../images/ox.png) no-repeat;
+    text-indent: -999px;
+    width: 150px;
+  }
+}
+
+.navbar-nav{
+    .navbar-btn{
+      text-indent: -999px;
+      border: 0;
+      width: 50px;
+    }
+
+   .navbar-btn:hover{
+       border: 0;
+    }
+
+    .new-project{
+       background: transparent url(../images/new_project.png) no-repeat;
+    }
+
+    .full-screen{
+      background: transparent url(../images/full_screen.png) no-repeat;
+    }
+    
+}
+
+.navbar-right li a{
+  background: transparent url(../images/logout.png) no-repeat;
+  text-indent: -9999px;
+  position: relative;
+  top: .85em;
+}
+
 .progress{
     height: 150px;
 }
