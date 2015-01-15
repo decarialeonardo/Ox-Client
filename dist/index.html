@@ -1,6 +1,6 @@
-<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.fe0152cc.css">  <body ng-app="OxApp"> <!--[if lt IE 7]>
+<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.781ae363.css">  <body ng-app="OxApp" ng-style="myStyle"> <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- Add your site or application content here --> <div class=""> <div ng-view=""></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    <![endif]--> <!-- Add your site or application content here --> <nav ng-include="'views/layout/navbar.html'" ng-controller="NavbarCtrl" class="navbar navbar-default" role="navigation" ng-show="!isActive('/login')"> </nav> <div class=""> <div ng-view=""></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
@@ -8,4 +8,4 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');</script> <!--[if lt IE 9]>
     <script src="scripts/oldieshim.d48d8270.js"></script>
-    <![endif]--> <script src="scripts/vendor.96ad76fb.js"></script> <script src="scripts/scripts.2967943a.js"></script>  
+    <![endif]--> <script src="scripts/vendor.96ad76fb.js"></script> <script src="scripts/scripts.89f04328.js"></script>  
