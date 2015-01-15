@@ -17,6 +17,8 @@ angular.module('OxApp')
 
         var MAX_COLUMNS = 12;
 
+        Stage.stopPolling('getStages');
+
         $scope.createModal = function(){
             var modalInstance = $modal.open({
                 templateUrl: 'createStageModal.html',
@@ -48,6 +50,18 @@ angular.module('OxApp')
                 }
             }
             return null;
+        }
+
+        $scope.delete = function(stage){
+            var modalInstance = $modal.open({
+              templateUrl: 'confirmModal.html',
+              controller: ModalConfirmCtrl,
+              resolve: {
+                    stage: function(){
+                        return stage;
+                    }
+                }
+            });
         }
 
         var getMaxColPosition = function(array){
@@ -101,20 +115,12 @@ angular.module('OxApp')
           console.log("Error: " + reason);
         }
 
-        var deletedStage = function(response){
-            NotificationAPI.showNotification('Se ha eliminado el stage con exito.');
-        }
-
         var runStage = function(response){
             NotificationAPI.showNotification('El stage a comenzado a correr.');
         }
 
-        $scope.delete = function(stageId){
-            //Stage.deleteStage($routeParams.projectId,stageId,deletedStage,onError);
-        }
-
         $scope.runs = function(stageId){
-            //Stage.runsStage($routeParams.projectId,stageId,runStage,onError);
+            Stage.runsStage($routeParams.projectId,stageId,runStage,onError);
         }
 
         Stage.getStages($routeParams.projectId,renderStages,onError);
@@ -137,5 +143,21 @@ angular.module('OxApp')
             var setStages = function(stages){
                 $scope.stages = stages;
             }
+        }
+
+        var ModalConfirmCtrl = function($scope, $modalInstance, stage) {
+            $scope.stage = stage;
+
+            var deletedStage = function(response){
+                NotificationAPI.showNotification('Se ha eliminado el stage con exito.');
+            }
+
+            $scope.deleteConfirmed = function(stageId){
+                Stage.deleteStage($routeParams.projectId,stageId,deletedStage,onError);
+            }
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
         }
   }]);

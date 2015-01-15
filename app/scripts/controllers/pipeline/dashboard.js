@@ -11,6 +11,8 @@ angular.module('OxApp')
   .controller('DashboardCtrl', ['$scope','$modal', 'Project', 'Stage', 'NotificationAPI','$location', function ($scope, $modal, Project, Stage, NotificationAPI, $location) {
         $scope.projects = [];
 
+        Project.stopPolling('getProjects');
+
   		$scope.open = function(){
   			var modalInstance = $modal.open({
 		      templateUrl: 'myModalContent.html',
@@ -30,21 +32,29 @@ angular.module('OxApp')
           console.log("Error: " + reason);
         }
 
-        var deletedProject = function(response){
-            NotificationAPI.showNotification('Se ha eliminado el proyecto con exito.');
-        }
-
         var runProject = function(response){
             NotificationAPI.showNotification('El proyecto a comenzado a correr.');
         }
 
-        $scope.delete = function(projectId){
-            Project.deleteProject(projectId,deletedProject,onError);
+        $scope.delete = function(project){
+            var modalInstance = $modal.open({
+              templateUrl: 'confirmModal.html',
+              controller: ModalConfirmCtrl,
+              resolve: {
+                    project: function(){
+                        return project;
+                    }
+                }
+            });
         }
 
         $scope.runs = function(projectId){
             Project.runsProject(projectId,runProject,onError);
         }
+
+
+
+        /** Modals**/
 
   		var ModalInstanceCtrl = function ($scope, $modalInstance) {
 
@@ -89,6 +99,22 @@ angular.module('OxApp')
 				$modalInstance.dismiss('cancel');
 			};
 		};
+
+        var ModalConfirmCtrl = function($scope, $modalInstance, project) {
+            $scope.project = project;
+
+            var deletedProject = function(response){
+                NotificationAPI.showNotification('Se ha eliminado el proyecto con exito.');
+            }
+
+            $scope.deleteConfirmed = function(projectId){
+                Project.deleteProject(projectId,deletedProject,onError);
+            }
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        }
 
 		Project.getProjects(onSuccess,onError);
 

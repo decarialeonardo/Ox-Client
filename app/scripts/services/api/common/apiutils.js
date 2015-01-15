@@ -15,6 +15,8 @@ angular.module('OxApp')
   	var serverURL = 'http://172.17.201.94:9091/Ox-Server/me';
   	var serverURLJava = '';
   	var serverURLNode = 'http://localhost:5000/';
+    var defaultPollingTime = 5000;
+    var polls = {};
   	
     this.getServerURL = function(){
 	  	return serverURL;
@@ -67,5 +69,20 @@ angular.module('OxApp')
     this.put = function(){};
 
     this.delete = function(){};
+
+    this.startPolling = function(name, url, callback) {
+        if (!polls[name]) {
+            var poller = function() {
+                $http.get(url).then(callback);
+            }
+            poller();
+            polls[name] = setInterval(poller, defaultPollingTime);
+        }
+    };
+
+    this.stopPolling =  function(name) {
+        clearInterval(polls[name]);
+        delete polls[name];
+    };
     
   }]);

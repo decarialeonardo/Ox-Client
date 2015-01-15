@@ -8,52 +8,51 @@
  * Service in the OxApp.
  */
 angular.module('OxApp')
-  .service('ApiStage', [ '$http', '$location','ApiUtils', function ($http, $location, ApiUtils) {
+  .service('ApiStage', ['$http', 'ApiUtils', function ($http, ApiUtils) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var serverURL = ApiUtils.getServerURL();
 
     this.setStage = function(projectId, params, success, error){
-    	$http.post(serverURL+'/projects/'+projectId+'/stages', params)
+        var resource = '/projects/'+projectId+'/stages';
+
+    	$http.post(serverURL+resource, params)
   			.then(function(response){
-  				console.log('');
   				success(response);
   			},function(reason){
-  				console.log('');
   				error(reason);
   		});
     };
 
     this.getStages = function(projectId, success, error){
-        $http.get(serverURL+'/projects/'+projectId+'/stages')
-            .then(function(response){
-                console.log('');
-                success(response);
-            },function(reason){
-                console.log('');
-                error(reason);
-        });
+        var resource = '/projects/'+projectId+'/stages';
+        
+        ApiUtils.startPolling('getStages',serverURL+resource, success);
     };
 
     this.deleteStage = function(projectId, stageId, success, error){
-        $http.delete(serverURL+'/projects/'+projectId+'/stages/'+stageId)
+        var resource = '/projects/'+projectId+'/stages/'+stageId;
+
+        $http.delete(serverURL+ resource)
             .then(function(response){
-                console.log('');
                 success(response);
             },function(reason){
-                console.log('');
                 error(reason);
         });
     };
 
     this.runsStage = function(projectId, stageId, success, error){
-        $http.post(serverURL+'/projects/'+projectId+'/stages/'+stageId+'/runs')
+        var resource = '/projects/'+projectId+'/stages/'+stageId+'/runs';
+
+        $http.post(serverURL+resource)
             .then(function(response){
-                console.log('');
                 success(response);
             },function(reason){
-                console.log('');
                 error(reason);
         });
     };
+
+    this.stopPolling = function(name){
+        ApiUtils.stopPolling(name);
+    }
 
  }]);

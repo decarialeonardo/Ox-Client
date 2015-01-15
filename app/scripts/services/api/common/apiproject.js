@@ -8,51 +8,53 @@
  * Service in the OxApp.
  */
 angular.module('OxApp')
-  .service('ApiProject', [ '$http', '$location','ApiUtils', function ($http, $location, ApiUtils) {
+  .service('ApiProject', [ '$http', 'ApiUtils', function ($http, ApiUtils) {
     var serverURL = ApiUtils.getServerURL();
 
     this.getProjects = function(success, error){
-    	$http.get(serverURL+'/projects')
+        ApiUtils.startPolling('getProjects',serverURL+'/projects', success);
+
+    	/*$http.get(serverURL+'/projects')
   			.then(function(response){
-  				console.log('');
   				success(response);
   			},function(reason){
-  				console.log('');
   				error(reason);
-  		});
+  		});*/
     };
 
     this.saveProject = function(params, success, error){
         $http.post(serverURL+'/projects', params)
             .then(function(response){
-                console.log('');
                 success(response);
             },function(reason){
-                console.log('');
                 error(reason);
         });
     };
 
     this.deleteProject = function(projectId, success, error){
-        $http.delete(serverURL+'/projects/'+projectId)
+        var resource = '/projects/'+projectId;
+
+        $http.delete(serverURL+ resource)
             .then(function(response){
-                console.log('');
                 success(response);
             },function(reason){
-                console.log('');
                 error(reason);
         });
     };
 
     this.runsProject = function(projectId, success, error){
-        $http.post(serverURL+'/projects/'+projectId+'/runs')
+        var resource = '/projects/'+projectId+'/runs';
+
+        $http.post(serverURL+resource)
             .then(function(response){
-                console.log('');
                 success(response);
             },function(reason){
-                console.log('');
                 error(reason);
         });
     };
+
+    this.stopPolling = function(name){
+        ApiUtils.stopPolling(name);
+    }
 
   }]);

@@ -43,4 +43,8 @@ angular.module('OxApp')
         }
         ApiStage.runsStage(projectId, stageId, onSuccess, onError);
     }
+
+    this.stopPolling = function(name){
+        ApiStage.stopPolling(name);
+    }
 }]);
