@@ -29,4 +29,18 @@ angular.module('OxApp')
         
         ApiStage.getStages(projectId, onSuccess, onError);
     }
+
+    this.deleteStage = function(projectId, stageId, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        ApiStage.deleteStage(projectId, stageId, onSuccess, onError);
+    }
+
+    this.runsStage = function(projectId, stageId, success, error){
+        var onSuccess = function(res){
+            success(res);
+        }
+        ApiStage.runsStage(projectId, stageId, onSuccess, onError);
+    }
 }]);

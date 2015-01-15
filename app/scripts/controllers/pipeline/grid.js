@@ -37,6 +37,10 @@ angular.module('OxApp')
             return new Array(size);
         }
 
+        $scope.isEmpty = function (obj) {
+           return angular.equals({},obj); 
+        }
+
         $scope.getJobInGrid = function(row, col){
             for (var i = 0; i < $scope.jobs.length; i++) {
                 if ($scope.jobs[i].rowPosition == row && $scope.jobs[i].colPosition == col){
@@ -97,8 +101,20 @@ angular.module('OxApp')
           console.log("Error: " + reason);
         }
 
-        $scope.edit = function(job){
-            
+        var deletedStage = function(response){
+            NotificationAPI.showNotification('Se ha eliminado el stage con exito.');
+        }
+
+        var runStage = function(response){
+            NotificationAPI.showNotification('El stage a comenzado a correr.');
+        }
+
+        $scope.delete = function(stageId){
+            //Stage.deleteStage($routeParams.projectId,stageId,deletedStage,onError);
+        }
+
+        $scope.runs = function(stageId){
+            //Stage.runsStage($routeParams.projectId,stageId,runStage,onError);
         }
 
         Stage.getStages($routeParams.projectId,renderStages,onError);

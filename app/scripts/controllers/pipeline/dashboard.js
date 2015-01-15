@@ -34,12 +34,16 @@ angular.module('OxApp')
             NotificationAPI.showNotification('Se ha eliminado el proyecto con exito.');
         }
 
+        var runProject = function(response){
+            NotificationAPI.showNotification('El proyecto a comenzado a correr.');
+        }
+
         $scope.delete = function(projectId){
             Project.deleteProject(projectId,deletedProject,onError);
         }
 
-        $scope.run = function(projectId){
-            Project.saveProject(projectId,deletedProject,onError);
+        $scope.runs = function(projectId){
+            Project.runsProject(projectId,runProject,onError);
         }
 
   		var ModalInstanceCtrl = function ($scope, $modalInstance) {

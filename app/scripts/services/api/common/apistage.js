@@ -34,4 +34,26 @@ angular.module('OxApp')
         });
     };
 
+    this.deleteStage = function(projectId, stageId, success, error){
+        $http.delete(serverURL+'/projects/'+projectId+'/stages/'+stageId)
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
+    this.runsStage = function(projectId, stageId, success, error){
+        $http.post(serverURL+'/projects/'+projectId+'/stages/'+stageId+'/runs')
+            .then(function(response){
+                console.log('');
+                success(response);
+            },function(reason){
+                console.log('');
+                error(reason);
+        });
+    };
+
  }]);

@@ -44,8 +44,8 @@ angular.module('OxApp')
         });
     };
 
-    this.runProject = function(projectId, success, error){
-        $http.post(serverURL+'/projects/'+projectId+'/run')
+    this.runsProject = function(projectId, success, error){
+        $http.post(serverURL+'/projects/'+projectId+'/runs')
             .then(function(response){
                 console.log('');
                 success(response);

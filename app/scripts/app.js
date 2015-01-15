@@ -25,7 +25,10 @@ angular
     $routeProvider
       .when('/login', {
         templateUrl: 'views/session/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        bodyStyle: {
+          'background-color': 'green'
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',

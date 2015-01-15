@@ -9,8 +9,16 @@
  */
 angular.module('OxApp')
   .controller('NavbarCtrl', ['$scope','$location', 'Fullscreen', function ($scope, $location, Fullscreen) {
+
+
   	$scope.isActive = function (viewLocation) {
-	   return (viewLocation === $location.path());
+	  	if ( $location.path() == '/login'){
+	  		$scope.$parent.myStyle = {background:'#0B3F41'};
+	  	} else {
+	  		$scope.$parent.myStyle = {background:'#efefef'};
+	  	}
+
+	   	return (viewLocation === $location.path());
 	};
 
 	$scope.goFullscreen = function () {
