@@ -19,13 +19,16 @@ angular.module('OxApp')
 
         Stage.stopPolling('getStages');
 
-        $scope.createModal = function(){
+        $scope.createModal = function(stage){
             var modalInstance = $modal.open({
                 templateUrl: 'createStageModal.html',
                 controller: ModalInstanceCtrl,
                 resolve: {
                     stages: function(){
                         return $scope.stages;
+                    },
+                    stage: function(){
+                        return stage;
                     }
                 }
             });
@@ -125,15 +128,24 @@ angular.module('OxApp')
 
         Stage.getStages($routeParams.projectId,renderStages,onError);
 
-        var ModalInstanceCtrl = function ($scope, $modalInstance, stages) {
+        var ModalInstanceCtrl = function ($scope, $modalInstance, stages, stage) {
   			$scope.stages = stages;
+            var updateStage = false;
+            if ( stage ){
+                updateStage = true;
+            }
 
+            $scope.stage = stage;
             var addedStage = function(response){
                 NotificationAPI.showNotification('Se ha creado el stage con exito.');
             }
 
             $scope.addStage = function (data) {
-                Stage.setStage($routeParams.projectId,data,addedStage,onError);
+                if ( updateStage ){
+                    Stage.updateStage($routeParams.projectId,data,addedStage,onError);
+                } else {
+                    Stage.setStage($routeParams.projectId,data,addedStage,onError);
+                }
             }
 
             $scope.close = function () {
