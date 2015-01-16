@@ -1,10 +1,22 @@
+body{
+  height: 100%;
+}
 .body-dashboard{
-	padding-top: 70px;
 }
 
 .navbar-default {
   background-color: #0B3F41;
   border-color: #e7e7e7;
+}
+
+.btn-success{
+  background-color: #0B3F41;
+  border-color: #e7e7e7;
+}
+
+.btn-success:hover{
+  background-color: #052827;
+  border-color: #578c8a;
 }
 
 .navbar-header{
@@ -35,7 +47,10 @@
     .full-screen{
       background: transparent url(../images/full_screen.png) no-repeat;
     }
-    
+
+    .full-screen:visited{
+      border: 0;
+    }
 }
 
 .navbar-right li a{
@@ -45,22 +60,28 @@
   top: .85em;
 }
 
+.card .face.front.ng-scope{
+  background-color: #efefef;
+}
 .progress{
-    height: 150px;
+    height: 140px;
+    border-radius: .4em;
 }
 
 .flip {
-  height: 256px;
-  margin: 50px auto;
+  height: 140px;
+  margin: 15px auto;
   font-size: 3em;
   text-align: center;
+  border-radius: .4em;
 }
 .face.front {
   background-color: white;
 }
 .face.back {
-  background-color: black;
-  color: white;
+  background-color: #527f7e;
+  /* color: white; */
+  border-radius: .4em;
 }
 
 .flip {
