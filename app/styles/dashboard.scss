@@ -14,10 +14,35 @@ body{
   border-color: #e7e7e7;
 }
 
-.btn-success:hover{
+.btn-success:hover, .btn-info:hover, .btn-danger:hover{
   background-color: #052827;
   border-color: #578c8a;
 }
+
+.flipped .btn{
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px;
+  border: 1px solid #fff;
+  margin-top: 45px;
+}
+
+.btn-back, .btn-back:active{
+  background: transparent url(../images/btn_back.png) no-repeat;
+}
+.btn-run, .btn-run:active{
+  background: transparent url(../images/run_btn.png) no-repeat;
+}
+.btn-details, .btn-details:active{
+  background: transparent url(../images/details_btn.png) no-repeat;
+}
+.btn-delete, .btn-delete:active{
+  background: transparent url(../images/delete_btn.png) no-repeat;
+}
+.flipped .btn:hover{
+  border: 1px solid #fff;
+}
+
 
 .navbar-header{
   margin: 0;
@@ -64,12 +89,12 @@ body{
   background-color: #efefef;
 }
 .progress{
-    height: 140px;
+    height: 130px;
     border-radius: .4em;
 }
 
 .flip {
-  height: 140px;
+  height: 130px;
   margin: 15px auto;
   font-size: 2.5em;
   text-align: center;
