@@ -9,7 +9,7 @@
 					<div class="progress" card-toggle>
 						<div class="progress-bar progress-bar-{{project.status}} progress-bar-striped" role="progressbar" aria-valuenow="{{project.statics.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{project.statics.progress}}%;">
 						</div>
-						<div style="position:absolute;width:100%;">
+						<div style="position:absolute;width:100%; margin-top:40px;">
 							<div class="col-xs-4">
 								{{project.statics.progress}}%
 							</div>
@@ -23,10 +23,10 @@
 					</div>
 			    </card-front>
 			    <card-back>
-			    	<button type="button" class="btn btn-success" card-toggle>Volve</button>
-		            <button type="button" class="btn btn-success" ng-click="runs(project.id)">Correr</button>
-					<button type="button" class="btn btn-info" ng-click="showGrid(project.id)">Ver</button>
-					<button type="button" class="btn btn-danger" ng-click="delete(project)">Borrar</button>
+			    	<button type="button" class="btn btn-success btn-back" card-toggle></button>
+		            <button type="button" class="btn btn-success btn-run" ng-click="runs(project.id)"></button>
+					<button type="button" class="btn btn-info btn-details" ng-click="showGrid(project.id)"></button>
+					<button type="button" class="btn btn-danger btn-delete" ng-click="delete(project)"></button>
 			    </card-back>
 			</cardflip>
 		</div>
