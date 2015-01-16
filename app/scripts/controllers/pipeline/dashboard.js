@@ -67,8 +67,7 @@ angular.module('OxApp')
             }
 
             var createdStage = function(response){
-                NotificationAPI.showNotification('Se ha creado el proyecto con exito.');
-                $location.path('/pipeline/grid/'+$scope.project['id']);
+                $location.path('/pipeline/grid/'+$scope.project['id']+'?created');
                 $modalInstance.close();
             }
 

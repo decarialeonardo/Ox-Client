@@ -18,6 +18,11 @@ angular.module('OxApp')
         var MAX_COLUMNS = 12;
 
         Stage.stopPolling('getStages');
+        $routeParams.projectId = decodeURI($routeParams.projectId)
+        if ( $routeParams.projectId.indexOf('?') != -1 ){
+            $routeParams.projectId = $routeParams.projectId.split('?')[0];
+            NotificationAPI.showNotification('Se ha creado el proyecto con exito.');
+        }
 
         $scope.createModal = function(stage){
             var modalInstance = $modal.open({
@@ -130,12 +135,15 @@ angular.module('OxApp')
 
         var ModalInstanceCtrl = function ($scope, $modalInstance, stages, stage) {
   			$scope.stages = stages;
+            $scope.stage = {};
             var updateStage = false;
             if ( stage ){
                 updateStage = true;
+                $scope.stage = stage;
+            } else {
+                $scope.stage['type'] = 'heroku-deploy-stage';
             }
 
-            $scope.stage = stage;
             var addedStage = function(response){
                 NotificationAPI.showNotification('Se ha creado el stage con exito.');
             }
@@ -146,6 +154,7 @@ angular.module('OxApp')
                 } else {
                     Stage.setStage($routeParams.projectId,data,addedStage,onError);
                 }
+                $modalInstance.dismiss('cancel');
             }
 
             $scope.close = function () {

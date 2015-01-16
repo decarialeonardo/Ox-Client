@@ -1,4 +1,3 @@
-<notification></notification>
 <div class="col-md-3">
 	<div class="col-md-9">
 	    <button ng-click="createModal()" class="thumbnail">
@@ -7,6 +6,7 @@
     </div>
 </div>
 <div class="col-md-9">
+	<notification></notification>
 	<div class="row" ng-if="!isEmpty(stages)" ng-repeat="row in getRows(rowPosition+1) track by $index">
 		<div class="col-xs-{{colDivision}}" ng-repeat="col in getCols(maxCol+1) track by $index">
 			<div style="display:none;">{{job = getJobInGrid($parent.$index, $index)}}</div>
@@ -46,8 +46,8 @@
     </div>
     <div class="modal-body">
 		<div class="form-group">
-			<label for="name">Nombre:</label>
-			<input type="text" class="form-control" ng-model="stage.type" placeholder="Enter Name">
+			<label for="name">Tipo:</label>
+			<input type="text" class="form-control" ng-model="stage.type" placeholder="Enter Type">
 		</div>
 		<div class="form-group">
 			<label for="url">Url:</label>

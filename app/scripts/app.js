@@ -38,7 +38,7 @@ angular
         templateUrl: 'views/pipeline/dashboard.html',
         controller: 'DashboardCtrl'
       })
-      .when('/pipeline/grid/:projectId', {
+      .when('/pipeline/grid/:projectId?', {
         templateUrl: 'views/pipeline/grid.html',
         controller: 'GridCtrl'
       })

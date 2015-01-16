@@ -38,7 +38,7 @@
                     $timeout(function(){
                         scope.api.status = false;
                         $animate['removeClass'](element, 'ng-hide');
-                    }, 5000);
+                    }, 4000);
                 }
             });
         }

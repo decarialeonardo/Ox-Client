@@ -2,6 +2,7 @@
 
 <div class="container body-dashboard">
 	<notification></notification>
+	<div class="row">
 		<div class="col-md-12" ng-repeat="project in projects">
 			<cardflip flipped="flipped">
 				<card-front>
@@ -29,6 +30,7 @@
 			    </card-back>
 			</cardflip>
 		</div>
+	</div>
 </div>
 
 <script type="text/ng-template" id="myModalContent.html">
