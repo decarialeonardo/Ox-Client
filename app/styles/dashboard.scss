@@ -2,6 +2,7 @@ body{
   height: 100%;
 }
 .body-dashboard{
+  height: 800px;
 }
 
 .navbar-default {
@@ -91,6 +92,18 @@ body{
 .progress{
     height: 130px;
     border-radius: .4em;
+}
+
+.progress-bar-success{
+  background-color: #3a936f;
+}
+
+.progress-bar-building{
+  background-color: #3a936f;
+}
+
+.progress-bar-danger{
+  background-color: #7f2626;
 }
 
 .flip {
