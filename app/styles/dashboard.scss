@@ -1,8 +1,18 @@
-body{
+html{
   height: 100%;
 }
+
+body{
+  height: 100%;
+ }
+
+.container{
+  min-height: 100%;
+}
+
 .body-dashboard{
-  height: 800px;
+  height: 100%;
+  background-color: #efefef;
 }
 
 .navbar-default {
@@ -92,9 +102,10 @@ body{
 .progress{
     height: 130px;
     border-radius: .4em;
+    background-color: #9FD4A2;
 }
 
-.progress-bar-success{
+.progress-bar, .progress-bar-success{
   background-color: #3a936f;
 }
 
@@ -102,16 +113,17 @@ body{
   background-color: #3a936f;
 }
 
-.progress-bar-danger{
-  background-color: #7f2626;
+.progress-bar-failed{
+  background-color: #C65C5A;
 }
 
 .flip {
   height: 130px;
   margin: 15px auto;
-  font-size: 2.5em;
+  font-size: 2.25em;
   text-align: center;
   border-radius: .4em;
+  color: #fff;
 }
 .face.front {
   background-color: white;
